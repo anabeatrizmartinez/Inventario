@@ -13,4 +13,10 @@ Es un sistema de inventario para un centro deportivo, dicho inventario debe cump
 	* Usuarios de un tipo de instrumento. (Ej. Listado de todos los usuarios de balones de basketball).
 	* Lista de donantes de instrumentos.
 
+Para la codificación de los instrumentos, se construye el código utilizando como prefijo el CODIGO DE TIPO, seguido de un número correlativo. Por ejemplo:
+Para las pelotas de baseball se tendría:
+PBB001, PBB002,…..
+Para los balones de football se tendría:
+BFB001, BFB002,…..
+
 Programa aún en proceso.
