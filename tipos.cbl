@@ -344,12 +344,18 @@
            DELETE TIPO-INSTRUMENTO-ARCHIVO RECORD *>ELIMINO LLAVE ANTERIOR.
            WRITE TIPO-INSTRUMENTO-REGISTRO *>ESCRIBO NUEVA LLAVE.
                FROM WS-TIPO-INSTRUMENTO-REGISTRO-2
-       WHEN 1 *>SI EXISTE, ELIMINO ANTERIOR Y SE REESCRIBE.
-           MOVE WS-TIPO-INSTRUMENTO-REGISTRO-1
-               TO TIPO-INSTRUMENTO-REGISTRO
-           DELETE TIPO-INSTRUMENTO-ARCHIVO RECORD *>ELIMINO LLAVE ANTERIOR.
-           REWRITE TIPO-INSTRUMENTO-REGISTRO *>REESCRIBO NUEVA LLAVE.
-               FROM WS-TIPO-INSTRUMENTO-REGISTRO-2
+       WHEN 1 *>SI YA EXISTE EN LA BASE DE DATOS, INGRESAR OTRO CODIGO
+           DISPLAY " "
+           DISPLAY "El codigo de tipo de instrumento ya existe "
+           DISPLAY " "
+           DISPLAY "¿Que desea hacer?"
+           DISPLAY "1.- Ingresar otro codigo de tipo"
+           DISPLAY "2.- Actualizar otro tipo de instrumento deportivo"
+           DISPLAY "3.- Volver al menu"
+           DISPLAY "4.- Salir"
+           DISPLAY "Ingrese numero de opcion deseada:"
+           ACCEPT WS-OPCION
+           PERFORM VALIDACION-CODIGO-IGUAL
        WHEN 2 *>SI LA LLAVE ES LA MISMA, SOLO SE REESCRIBE
            REWRITE TIPO-INSTRUMENTO-REGISTRO *>REESCRIBO LA LLAVE.
                FROM WS-TIPO-INSTRUMENTO-REGISTRO-2
@@ -360,6 +366,29 @@
 
        CLOSE TIPO-INSTRUMENTO-ARCHIVO.
        PERFORM VOLVER-ACTUALIZAR.
+
+       VALIDACION-CODIGO-IGUAL.
+       EVALUATE WS-OPCION
+       WHEN 1
+           DISPLAY " "
+           DISPLAY "Por favor ingrese otro codigo de tipo"
+           ACCEPT CODIGO-TIPO
+           MOVE CODIGO-TIPO TO WS-CODIGO-TIPO-2
+           PERFORM FINAL-EDITAR-CAMPOS
+       WHEN 2
+           CLOSE TIPO-INSTRUMENTO-ARCHIVO
+           PERFORM ACTUALIZAR
+       WHEN 3
+           CLOSE TIPO-INSTRUMENTO-ARCHIVO
+           PERFORM PROGRAM-BEGIN
+       WHEN 4
+           CLOSE TIPO-INSTRUMENTO-ARCHIVO
+           STOP RUN
+       WHEN OTHER
+           DISPLAY "Por favor ingrese una opcion valida"
+           ACCEPT WS-OPCION
+           PERFORM VALIDACION-CODIGO-IGUAL
+       END-EVALUATE.
 
 
        EXIT PROGRAM.
