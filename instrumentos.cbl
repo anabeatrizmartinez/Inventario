@@ -110,7 +110,7 @@
        CLOSE INSTRUMENTOS-ARCHIVO.
 
        REGISTRAR.
-       DISPLAY "---Registro de nuevo instrumento---"
+       DISPLAY "---Registro de nuevo instrumento---".
        DISPLAY " ".
        DISPLAY "Indique tipo de instrumento".
        ACCEPT WS-TIPO-INSTRUMENTO.
