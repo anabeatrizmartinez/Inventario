@@ -140,7 +140,7 @@
        ACTUALIZAR.
        DISPLAY "---Actualizar proveedores---".
        DISPLAY " ".
-       DISPLAY "Indique numero de cedula o RIF del proveedor "
+       DISPLAY "Indique numero de cedula o RIF del proveedor ".
        DISPLAY "que desea actualizar".
        ACCEPT ID-PROVEEDOR.
        *>VERIFICAR SI EL CODIGO YA EXISTE EN LA BASE DE DATOS
@@ -222,7 +222,7 @@
 
        ELIMINAR. *>ELIMINAR EL PROVEEDOR
        DISPLAY "¿Esta seguro de eliminar el "
-       DISPLAY "PROVEEDOR " ID-PROVEEDOR "? (S/N)".
+       DISPLAY "proveedor " ID-PROVEEDOR "? (S/N)".
        ACCEPT WS-SI-NO.
        PERFORM VALIDACION-ELIMINAR.
 

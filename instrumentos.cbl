@@ -219,7 +219,7 @@
        ACTUALIZAR.
        DISPLAY "---Actualizar instrumentos---".
        DISPLAY " ".
-       DISPLAY "Indique codigo de instrumento "
+       DISPLAY "Indique codigo de instrumento ".
        DISPLAY "deportivo que desea actualizar".
        ACCEPT ID-INSTRUMENTO.
 

@@ -131,7 +131,7 @@
        ACTUALIZAR.
        DISPLAY "---Actualizar tipo de instrumentos---".
        DISPLAY " ".
-       DISPLAY "Indique codigo de tipo de instrumento "
+       DISPLAY "Indique codigo de tipo de instrumento ".
        DISPLAY "deportivo que desea actualizar".
        ACCEPT CODIGO-TIPO.
        *>VERIFICAR SI EL CODIGO YA EXISTE EN LA BASE DE DATOS
