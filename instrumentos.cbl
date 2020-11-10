@@ -32,7 +32,7 @@
        FD INSTRUMENTOS-ARCHIVO. *>NOMBRE DEL ARCHIVO IGUAL AL FÍSICO.
            01 INSTRUMENTOS-REGISTRO. *>REGISTRO DEL ARCHIVO.
                05 ID-INSTRUMENTO       PIC X(6).
-               05 TIPO-INSTRUMENTO     PIC X(40).
+               05 TIPO-INSTRUMENTO-IN  PIC X(40).
                05 FECHA-ADQUISICION    PIC 9(6).
                05 FORMA-ADQUISICION    PIC X(8).
                05 ID-PROVEEDOR         PIC X(11).
@@ -54,7 +54,7 @@
 
        01 WS-INSTRUMENTOS-REGISTRO.
                05 WS-ID-INSTRUMENTO       PIC X(6).
-               05 WS-TIPO-INSTRUMENTO     PIC X(40).
+               05 WS-TIPO-INSTRUMENTO-IN  PIC X(40).
                05 WS-FECHA-ADQUISICION    PIC 9(6).
                05 WS-FORMA-ADQUISICION    PIC X(8).
                05 WS-ID-PROVEEDOR         PIC X(11).
@@ -113,7 +113,7 @@
        DISPLAY "---Registro de nuevo instrumento---".
        DISPLAY " ".
        DISPLAY "Indique tipo de instrumento".
-       ACCEPT WS-TIPO-INSTRUMENTO.
+       ACCEPT WS-TIPO-INSTRUMENTO-IN.
        DISPLAY " ".
        DISPLAY "Indique codigo del tipo de instrumento (3 letras)".
        ACCEPT WS-CODIGO-TIPO.
@@ -128,7 +128,7 @@
 
        *>REGISTRAR DATOS PARA GENERAR EL CODIGO DEL INSTRUMENTO.
        IF WS-INDICADOR = 0 *>SI NO EXISTE, GUARDO EL NUEVO REGISTRO EN TIPO-INSTRUMENTO
-           MOVE WS-TIPO-INSTRUMENTO TO NOMBRE-TIPO
+           MOVE WS-TIPO-INSTRUMENTO-IN TO NOMBRE-TIPO
            MOVE 1 TO CORRELATIVO
            WRITE TIPO-INSTRUMENTO-REGISTRO
        ELSE *>SI EXISTE, ACTUALIZO EL CORRELATIVO.
@@ -141,7 +141,7 @@
        DISPLAY "Codigo de instrumento generado: " ID-INSTRUMENTO.
 
        *>SOLICITUD DE LOS DEMÁS DATOS DEL ARCHIVO INSTRUMENTOS.
-       MOVE WS-TIPO-INSTRUMENTO TO TIPO-INSTRUMENTO.
+       MOVE WS-TIPO-INSTRUMENTO-IN TO TIPO-INSTRUMENTO-IN.
        DISPLAY " ".
        DISPLAY "Ingrese Fecha de adquisicion (AA/MM/DD)".
        ACCEPT FECHA-ADQUISICION.
@@ -238,7 +238,7 @@
        ELSE *>SI EXISTE MUESTRO LOS CAMPOS ANTES DE ACTUALIZAR.
            DISPLAY " "
            DISPLAY "Codigo de instrumento: " ID-INSTRUMENTO
-           DISPLAY "Tipo de instrumento: " TIPO-INSTRUMENTO
+           DISPLAY "Tipo de instrumento: " TIPO-INSTRUMENTO-IN
            DISPLAY "Fecha de adquisicion: " FECHA-ADQUISICION
            DISPLAY "Forma de adquisicion: " FORMA-ADQUISICION
            DISPLAY "Cedula o RIF de Proveedor: " ID-PROVEEDOR
@@ -332,7 +332,7 @@
        PERFORM CONFIRMAR-ID.
 
        DISPLAY " ".
-       DISPLAY "Tipo de instrumento: " TIPO-INSTRUMENTO.
+       DISPLAY "Tipo de instrumento: " TIPO-INSTRUMENTO-IN.
        PERFORM CONFIRMAR.
        PERFORM CONFIRMAR-TIPO.
 
@@ -417,10 +417,10 @@
        WHEN 1
            DISPLAY " "
            DISPLAY "Ingrese nuevo Tipo de instrumento "
-           ACCEPT WS-TIPO-INSTRUMENTO
+           ACCEPT WS-TIPO-INSTRUMENTO-IN
            NEXT SENTENCE
        WHEN 2
-           MOVE TIPO-INSTRUMENTO TO WS-TIPO-INSTRUMENTO
+           MOVE TIPO-INSTRUMENTO-IN TO WS-TIPO-INSTRUMENTO-IN
            NEXT SENTENCE
        WHEN OTHER
            DISPLAY "Por favor ingrese una opcion valida"

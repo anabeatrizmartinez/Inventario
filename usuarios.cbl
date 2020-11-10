@@ -95,7 +95,7 @@
                NOT INVALID KEY MOVE 1 TO WS-INDICADOR.
        IF WS-INDICADOR = 0 *>SI NO EXISTE, GUARDO EL NUEVO REGISTRO
            DISPLAY " "
-           DISPLAY "Ingrese nombre del usuaio"
+           DISPLAY "Ingrese nombre del usuario"
            ACCEPT NOMBRE-USUARIO
            DISPLAY " "
            DISPLAY "Ingrese sexo del usuario (femenino o masculino)"
@@ -148,7 +148,7 @@
        DISPLAY " ".
        DISPLAY "Indique numero de cedula del usuario".
        ACCEPT CEDULA-USUARIO.
-       *>VERIFICAR SI EL CODIGO YA EXISTE EN LA BASE DE DATOS
+       *>VERIFICAR SI LA CEDULA YA EXISTE EN LA BASE DE DATOS
        OPEN I-O USUARIOS-ARCHIVO.
        READ USUARIOS-ARCHIVO RECORD
            KEY CEDULA-USUARIO
