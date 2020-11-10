@@ -32,5 +32,3 @@ Para los balones de football se tendría:
 &nbsp;&nbsp;&nbsp; BFB001, BFB002,…..
 
 &nbsp;
-
-Programa aún en proceso.
